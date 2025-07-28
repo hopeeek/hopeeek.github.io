@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>БШЭМ - Образование для карьеры и жизни</title>
+    <meta name="description" content="Бизнес Школа Экономики и Менеджмента — более 100 программ по программированию, бухгалтерии, дизайну и нейросетям. Обучение с практикой и трудоустройством.">
+    <meta name="keywords" content="БШЭМ, бизнес школа, курсы, программирование, бухгалтерия, дизайн, маркетплейсы, нейросети">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #3B82F6;
+            --primary-dark: #2563EB;
+            --dark: #1E293B;
+            --gray: #64748B;
+            --light-gray: #F8FAFC;
+            --border: #E2E8F0;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+            background-color: #fff;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .header {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            padding: 30px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://placehold.co/1920x600/e0f2fe/ffffff?text=') no-repeat center center;
+            opacity: 0.3;
+            z-index: 1;
+        }
+        .free-schedule {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(59, 130, 246, 0.1);
+            padding: 8px 16px;
+            border-radius: 50px;
+            margin-bottom: 20px;
+            font-weight: 500;
+            color: var(--primary);
+            font-size: 14px;
+        }
+        .free-schedule::after {
+            content: 'без дедлайнов';
+            margin-left: 8px;
+            color: var(--gray);
+        }
+        .hero-title {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        .hero-subtitle {
+            font-size: 20px;
+            font-weight: 400;
+            margin-bottom: 30px;
+            color: var(--gray);
+            max-width: 600px;
+        }
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+        .programs {
+            padding: 80px 0;
+            background-color: #fff;
+        }
+        .section-title {
+            font-size: 36px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        .program-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        .program-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        .program-card h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .program-card p {
+            color: var(--gray);
+            font-size: 15px;
+        }
+        .stats {
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        .stat-item h3 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .stat-item p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        .support {
+            padding: 80px 0;
+            background-color: var(--light-gray);
+        }
+        .support-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        .support-item {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            border: 1px solid var(--border);
+        }
+        .support-item h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin: 15px 0;
+        }
+        .support-item p {
+            color: var(--gray);
+            font-size: 15px;
+            margin-bottom: 20px;
+        }
+        .projects {
+            padding: 80px 0;
+            background-color: white;
+        }
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .project-card {
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+        .project-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .partners {
+            padding: 60px 0;
+            background-color: var(--light-gray);
+            text-align: center;
+        }
+        .partners-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+        .companies {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-top: 20px;
+        }
+        .company {
+            color: var(--gray);
+            font-size: 16px;
+            font-weight: 500;
+        }
+        .guarantee {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            padding: 60px 0;
+            text-align: center;
+        }
+        .guarantee-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .guarantee h3 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        .guarantee p {
+            color: var(--gray);
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+        .ceo {
+            padding: 80px 0;
+            background-color: #f8fafc;
+        }
+        .ceo-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .ceo-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .ceo-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .ceo h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .ceo p.position {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        .ceo p.bio {
+            color: var(--gray);
+            font-size: 16px;
+            line-height: 1.7;
+        }
+        .contact {
+            padding: 80px 0;
+            background-color: var(--dark);
+            color: white;
+        }
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .contact h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+        .contact p {
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-control {
+            width: 100%;
+            padding: 14px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 16px;
+        }
+        .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        footer {
+            background-color: #1e293b;
+            color: white;
+            padding: 40px 0 20px;
+        }
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        .footer-column h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        .footer-column ul {
+            list-style: none;
+        }
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        .footer-column ul li a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 15px;
+            transition: all 0.3s ease;
+        }
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 14px;
+        }
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 36px;
+            }
+            .hero-subtitle {
+                font-size: 18px;
+            }
+            .section-title {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container header-content">
+            <div class="free-schedule">
+                Свободный график без дедлайнов
+            </div>
+            <h1 class="hero-title">Найди себя и новую профессию в Бизнес Школе Экономики и Менеджмента (БШЭМ)</h1>
+            <p class="hero-subtitle">Более 100 программ для карьеры и жизни</p>
+            <a href="#contact" class="btn">Начать обучение</a>
+        </div>
+    </header>
+
+    <section class="programs">
+        <div class="container">
+            <h2 class="section-title">Программы обучения</h2>
+            <div class="programs-grid">
+                <div class="program-card">
+                    <h3>Программирование</h3>
+                    <p>Вы освоите самый востребованный язык программирования, на котором пишут сайты, приложения, игры и чат-боты. Сделаете 3 проекта для портфолио, а Центр карьеры поможет найти работу</p>
+                </div>
+                <div class="program-card">
+                    <h3>Бухгалтерия</h3>
+                    <p>Вы научитесь вести бухучёт, работать в 1С, готовить налоговую отчётность и рассчитывать зарплату. Сможете начать карьеру или получить повышение</p>
+                </div>
+                <div class="program-card">
+                    <h3>Дизайн</h3>
+                    <p>Вы научитесь создавать айдентику для брендов и освоите популярные графические редакторы – от Illustrator до Figma. Сможете зарабатывать уже во время обучения</p>
+                </div>
+                <div class="program-card">
+                    <h3>3D-моделирование</h3>
+                    <p>Вы станете специалистом, который умеет в 3D всё: создавать объекты и окружение, настраивать текстуры и цвет, анимировать модели и внедрять их в 3D-сцену</p>
+                </div>
+                <div class="program-card">
+                    <h3>Маркетплейсы</h3>
+                    <p>Вы научитесь управлять продажами на популярных площадках. Станете востребованным менеджером маркетплейсов или сможете запустить свой бизнес с нуля</p>
+                </div>
+                <div class="program-card">
+                    <h3>Нейросети</h3>
+                    <p>Вы изучите 7 топовых нейросетей и узнаете, как использовать их в работе. Сможете повысить свою эффективность и увеличить доход</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="container">
+            <div class="stats-container">
+                <div class="stat-item">
+                    <h3>93%</h3>
+                    <p>выпускников считают — БШЭМ помог достичь цели</p>
+                </div>
+                <div class="stat-item">
+                    <h3>100+</h3>
+                    <p>программ для карьеры и жизни</p>
+                </div>
+                <div class="stat-item">
+                    <h3>5+</h3>
+                    <p>лет опыта у экспертов-кураторов</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="support">
+        <div class="container">
+            <h2 class="section-title">Поддерживаем и помогаем прийти к результату</h2>
+            <div class="support-grid">
+                <div class="support-item">
+                    <h3>Опытные кураторы</h3>
+                    <p>Даём подробную обратную связь. Каждую вашу работу проверит куратор-эксперт. Это практикующий специалист с опытом работы от 5 лет.</p>
+                </div>
+                <div class="support-item">
+                    <h3>Центр карьеры</h3>
+                    <p>Помогаем найти работу мечты. Мы научим вас проходить собеседования, вместе составим привлекательное резюме и портфолио.</p>
+                </div>
+                <div class="support-item">
+                    <h3>Практика и проекты</h3>
+                    <p>Основа обучения — максимум практики. Всю теорию вы закрепите на реальных задачах из повседневной работы специалиста.</p>
+                </div>
+                <div class="support-item">
+                    <h3>Сообщество</h3>
+                    <p>Объединяем студентов. Вы сможете обсуждать интересные вопросы в чатах, собирать команды и готовить групповые проекты.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="projects">
+        <div class="container">
+            <h2 class="section-title">Яркие проекты наших студентов</h2>
+            <p style="text-align: center; margin-bottom: 30px; color: var(--gray);">Собрали для вас вдохновляющие работы студентов БШЭМ за разные годы</p>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <img src="https://placehold.co/300x200/3B82F6/ffffff?text=Проект+1" alt="Проект 1">
+                </div>
+                <div class="project-card">
+                    <img src="https://placehold.co/300x200/10B981/ffffff?text=Проект+2" alt="Проект 2">
+                </div>
+                <div class="project-card">
+                    <img src="https://placehold.co/300x200/F59E0B/ffffff?text=Проект+3" alt="Проект 3">
+                </div>
+                <div class="project-card">
+                    <img src="https://placehold.co/300x200/EF4444/ffffff?text=Проект+4" alt="Проект 4">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="partners">
+        <div class="container">
+            <h2 class="partners-title">Создаём программы с вузами и топовыми компаниями страны</h2>
+            <div class="companies">
+                <span class="company">МГУ</span>
+                <span class="company">СПбГУ</span>
+                <span class="company">Сбер</span>
+                <span class="company">Яндекс</span>
+                <span class="company">VK</span>
+                <span class="company">Тинькофф</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="guarantee">
+        <div class="container guarantee-content">
+            <h3>Обучение легко совмещать с работой и личной жизнью</h3>
+            <p>Можно вернуться к занятиям и освежить знания в любой момент. Это зафиксировано юридически. Подробнее в Условиях возврата.</p>
+            <a href="#" class="btn">Подробнее</a>
+        </div>
+    </section>
+
+    <!-- CEO Section -->
+    <section class="ceo">
+        <div class="container">
+            <div class="ceo-content">
+                <div class="ceo-img">
+                    <img src="https://placehold.co/120x120/3B82F6/ffffff?text=АВ" alt="Алексей Васяев">
+                </div>
+                <h2>Васяев Алексей Анатольевич</h2>
+                <p class="position">Генеральный директор БШЭМ</p>
+                <p class="bio">
+                    Опыт работы в сфере образования и управления более 15 лет. Ранее занимал руководящие должности в крупных образовательных компаниях и вузах. 
+                    Под его руководством БШЭМ вышла на уровень одного из лидеров в подготовке специалистов по экономике, менеджменту и цифровым профессиям. 
+                    Убеждён, что качественное образование должно быть доступным, практико-ориентированным и менять жизнь к лучшему.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-content">
+                <h2>Поможем решить все вопросы</h2>
+                <p>Если вы хотите больше узнать о Бизнес Школе Экономики и Менеджмента или не знаете, какую программу обучения выбрать, оставьте заявку — и мы перезвоним</p>
+                <form action="https://formspree.io/f/your-form-id" method="POST">
+                    <div class="form-group">
+                        <input type="text" name="name" class="form-control" placeholder="Ваше имя" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" name="phone" class="form-control" placeholder="Телефон" required>
+                    </div>
+                    <button type="submit" class="btn">Оставить заявку</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>БШЭМ</h3>
+                    <ul>
+                        <li><a href="#">О компании</a></li>
+                        <li><a href="#">Программы</a></li>
+                        <li><a href="#">Отзывы</a></li>
+                        <li><a href="#">Контакты</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Программы</h3>
+                    <ul>
+                        <li><a href="#">Программирование</a></li>
+                        <li><a href="#">Дизайн</a></li>
+                        <li><a href="#">Маркетинг</a></li>
+                        <li><a href="#">Аналитика</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Поддержка</h3>
+                    <ul>
+                        <li><a href="#">Помощь</a></li>
+                        <li><a href="#">Возврат средств</a></li>
+                        <li><a href="#">Договор оферты</a></li>
+                        <li><a href="#">Политика конфиденциальности</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Социальные сети</h3>
+                    <ul>
+                        <li><a href="#">YouTube</a></li>
+                        <li><a href="#">Telegram</a></li>
+                        <li><a href="#">VK</a></li>
+                        <li><a href="#">Instagram</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                © 2025 Бизнес Школа Экономики и Менеджмента. Все права защищены.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
